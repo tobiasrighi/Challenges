@@ -42,8 +42,6 @@ namespace ConsoleApplication1
             //Console.WriteLine(Solution(15));
             //Console.WriteLine(Solution(1041));
 
-            tobias(0);
-            solution("a0Ba");
             //createHour(1, 8, 3, 2);
             //createHour(2, 4, 0, 0);
             //createHour(3, 0, 7, 0);
