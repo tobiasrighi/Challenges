@@ -44,13 +44,14 @@ namespace ConsoleApplication1
 
             tobias(0);
             solution("a0Ba");
-            solution(1, 8, 3, 2);
-            solution(2, 4, 0, 0);
-            solution(3, 0, 7, 0);
-            solution(9,1,9,7);
+            //createHour(1, 8, 3, 2);
+            //createHour(2, 4, 0, 0);
+            //createHour(3, 0, 7, 0);
+            //createHour(9,1,9,7);
         }
 
-        public static string solution(int A, int B, int C, int D)
+        //return the bigger hour giving 4 numbers or NOT POSSIBLE
+        public static string createHour(int A, int B, int C, int D)
         {
             string ret = string.Empty;
             List<int> pos = new List<int>();
@@ -91,7 +92,8 @@ namespace ConsoleApplication1
             return ret;
         }
 
-        public static int solution(string S)
+        //return bigger string with the pattern "start with a capital letter and dont have digits"
+        public static int biggerMatch(string S)
         {
             // Get first match.
             Match match = Regex.Match(S, @"[A-Z]+[a-zA-z]*\D");
@@ -105,6 +107,11 @@ namespace ConsoleApplication1
 
             return ret;
         }
+        
+        //if number can be divide by 3 return 'Fizz'
+        //if number can be divide by 5 return 'Buzz'
+        //if number can be divide by 7 return 'Woof'
+        //if can be divide by more than one, concat the string
         public static void tobias(int N)
         {
             string ret = string.Empty;
@@ -127,57 +134,56 @@ namespace ConsoleApplication1
 
         }
 
-        //        //binary gap
-        //        //Find longest sequence of zeros in binary representation of an integer.
-        //        public static int Solution(int N)
-        //        {
-        //            string val = Convert.ToString(N, 2);
-        //            int max = 0;
-        //            int counter = 0;
+        //binary gap
+        //Find longest sequence of zeros in binary representation of an integer.
+        public static int Solution(int N)
+        {
+            string val = Convert.ToString(N, 2);
+            int max = 0;
+            int counter = 0;
 
-        //            for (int i = 0; i < val.Length; i++)
-        //            {
-        //                if (val[i] == '0')
-        //                    counter++;
-        //                else
-        //                {
-        //                    if (counter > max)
-        //                        max = counter;
-        //                    counter = 0;
-        //                }
-        //            }
+            for (int i = 0; i < val.Length; i++)
+            {
+                if (val[i] == '0')
+                    counter++;
+                else
+                {
+                   if (counter > max)
+                       max = counter;
+                       counter = 0;
+                }
+             }
 
-        //            return max;
-        //        }
+            return max;
+        }
 
-        //        //Equi
-        //        //Find an index in an array such that its prefix sum equals its suffix sum
-        //        public static List<int> Equi(int[] A)
-        //        {
-        //            List<int> ret = new List<int>();
-        //            var eq = 1;
-        //            var somaA = A[0];
-        //            var somaB = 0;
+        //Equi
+        //Find an index in an array such that its prefix sum equals its suffix sum
+        public static List<int> Equi(int[] A)
+        {
+            List<int> ret = new List<int>();
+            var eq = 1;
+            var somaA = A[0];
+            var somaB = 0;
 
-        //            for(eq = 2; eq < A.Length; eq++)
-        //            {
-        //                somaB += A[eq];
-        //            }
-        //            if (somaA == somaB)
-        //                ret.Add(1);
-
-        //            for (eq = 2; eq < A.Length; eq++)
-        //            {
-        //                somaA += A[eq-1];
-        //                somaB -= A[eq];
-
-        //                if(somaA == somaB)
-        //                    ret.Add(eq);
-        //            }
-
-        //            if (ret.Count == 0)
-        //                ret.Add(-1);
-        //            return ret;
-        //        }
+            for(eq = 2; eq < A.Length; eq++)
+            {
+                somaB += A[eq];
             }
+            if (somaA == somaB)
+                ret.Add(1);
+
+            for (eq = 2; eq < A.Length; eq++)
+            {
+                somaA += A[eq-1];
+                somaB -= A[eq];
+                if(somaA == somaB)
+                    ret.Add(eq);
+            }
+
+             if (ret.Count == 0)
+                ret.Add(-1);
+            return ret;
+        }
     }
+}
